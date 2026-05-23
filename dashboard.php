@@ -24,153 +24,277 @@ $userwiseQuery = $connect->query($userwisesql);
 $userwieseOrder = $userwiseQuery->num_rows;
 
 $connect->close();
-
 ?>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<style type="text/css">
-	.ui-datepicker-calendar {
-		display: none;
-	}
+<style>
+
+body {
+    background: #f4f7fc;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.dashboard-card {
+    border-radius: 18px;
+    padding: 24px;
+    color: white;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+.dashboard-card h2 {
+    font-size: 34px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.dashboard-card p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 15px;
+}
+
+.dashboard-card i {
+    font-size: 30px;
+    opacity: 0.9;
+}
+
+.gradient-blue {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.gradient-green {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
+
+.gradient-red {
+    background: linear-gradient(135deg, #fa709a, #fee140);
+}
+
+.gradient-purple {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.dashboard-link {
+    text-decoration: none !important;
+}
+
+.date-card {
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    margin-bottom: 25px;
+}
+
+.date-card h1 {
+    font-size: 58px;
+    margin: 0;
+    color: #333;
+    font-weight: 700;
+}
+
+.date-card p {
+    color: #777;
+    margin-top: 10px;
+}
+
+.revenue-card {
+    background: linear-gradient(135deg, #141e30, #243b55);
+    color: white;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.revenue-card h1 {
+    font-size: 42px;
+    margin: 0;
+    font-weight: 700;
+}
+
+.revenue-card p {
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+.custom-panel {
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.custom-panel h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead {
+    background: #f8fafc;
+}
+
+.table thead th {
+    border: none !important;
+    padding: 15px !important;
+    font-weight: 600;
+}
+
+.table tbody td {
+    padding: 15px !important;
+    vertical-align: middle !important;
+}
+
+.badge-sales {
+    background: #4facfe;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 30px;
+    font-size: 13px;
+}
+
+@media(max-width:768px){
+
+    .dashboard-card h2 {
+        font-size: 26px;
+    }
+
+    .date-card h1 {
+        font-size: 42px;
+    }
+
+}
+
 </style>
 
-<!-- fullCalendar 2.2.5-->
-    <link rel="stylesheet" href="assests/plugins/fullcalendar/fullcalendar.min.css">
-    <link rel="stylesheet" href="assests/plugins/fullcalendar/fullcalendar.print.css" media="print">
-
+<div class="container-fluid">
 
 <div class="row">
-	<?php  if(isset($_SESSION['userId']) && $_SESSION['userId']==1) { ?>
-	<div class="col-md-4">
-		<div class="panel panel-success">
-			<div class="panel-heading">
-				
-				<a href="product.php" style="text-decoration:none;color:black;">
-					Total Product
-					<span class="badge pull pull-right"><?php echo $countProduct; ?></span>	
-				</a>
-				
-			</div> <!--/panel-hdeaing-->
-		</div> <!--/panel-->
-	</div> <!--/col-md-4-->
-	
-	<div class="col-md-4">
-		<div class="panel panel-danger">
-			<div class="panel-heading">
-				<a href="product.php" style="text-decoration:none;color:black;">
-					Low Stock
-					<span class="badge pull pull-right"><?php echo $countLowStock; ?></span>	
-				</a>
-				
-			</div> <!--/panel-hdeaing-->
-		</div> <!--/panel-->
-	</div> <!--/col-md-4-->
-	
-	
-	<?php } ?>  
-		<div class="col-md-4">
-			<div class="panel panel-info">
-			<div class="panel-heading">
-				<a href="orders.php?o=manord" style="text-decoration:none;color:black;">
-					Total Orders
-					<span class="badge pull pull-right"><?php echo $countOrder; ?></span>
-				</a>
-					
-			</div> <!--/panel-hdeaing-->
-		</div> <!--/panel-->
-		</div> <!--/col-md-4-->
 
-	
+<?php if(isset($_SESSION['userId']) && $_SESSION['userId']==1) { ?>
 
-	<div class="col-md-4">
-		<div class="card">
-		  <div class="cardHeader">
-		    <h1><?php echo date('d'); ?></h1>
-		  </div>
+<div class="col-md-4">
+    <a href="product.php" class="dashboard-link">
+        <div class="dashboard-card gradient-blue">
+            <i class="fa-solid fa-box"></i>
+            <h2><?php echo $countProduct; ?></h2>
+            <p>Total Products</p>
+        </div>
+    </a>
+</div>
 
-		  <div class="cardContainer">
-		    <p><?php echo date('l') .' '.date('d').', '.date('Y'); ?></p>
-		  </div>
-		</div> 
-		<br/>
+<div class="col-md-4">
+    <a href="product.php" class="dashboard-link">
+        <div class="dashboard-card gradient-red">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <h2><?php echo $countLowStock; ?></h2>
+            <p>Low Stock Items</p>
+        </div>
+    </a>
+</div>
 
-		<div class="card">
-		  <div class="cardHeader" style="background-color:#245580;">
-		    <h1><?php if($totalRevenue) {
-		    	echo $totalRevenue;
-		    	} else {
-		    		echo '0';
-		    		} ?></h1>
-		  </div>
+<?php } ?>
 
-		  <div class="cardContainer">
-		    <p> INR Total Revenue</p>
-		  </div>
-		</div> 
+<div class="col-md-4">
+    <a href="orders.php?o=manord" class="dashboard-link">
+        <div class="dashboard-card gradient-green">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <h2><?php echo $countOrder; ?></h2>
+            <p>Total Orders</p>
+        </div>
+    </a>
+</div>
 
-	</div>
-	
-	<?php  if(isset($_SESSION['userId']) && $_SESSION['userId']==1) { ?>
-	<div class="col-md-8">
-		<div class="panel panel-default">
-			<div class="panel-heading"> <i class="glyphicon glyphicon-calendar"></i> User Wise Order</div>
-			<div class="panel-body">
-				<table class="table" id="productTable">
-			  	<thead>
-			  		<tr>			  			
-			  			<th style="width:40%;">Name</th>
-			  			<th style="width:20%;">Orders in Rupees</th>
-			  		</tr>
-			  	</thead>
-			  	<tbody>
-					<?php while ($orderResult = $userwiseQuery->fetch_assoc()) { ?>
-						<tr>
-							<td><?php echo $orderResult['username']?></td>
-							<td><?php echo $orderResult['totalorder']?></td>
-							
-						</tr>
-						
-					<?php } ?>
-				</tbody>
-				</table>
-				<!--<div id="calendar"></div>-->
-			</div>	
-		</div>
-		
-	</div> 
-	<?php  } ?>
-	
-</div> <!--/row-->
+</div>
 
-<!-- fullCalendar 2.2.5 -->
-<script src="assests/plugins/moment/moment.min.js"></script>
-<script src="assests/plugins/fullcalendar/fullcalendar.min.js"></script>
+<div class="row">
 
+<div class="col-md-4">
 
-<script type="text/javascript">
-	$(function () {
-			// top bar active
-	$('#navDashboard').addClass('active');
+    <div class="date-card">
+        <h1><?php echo date('d'); ?></h1>
+        <p><?php echo date('l') . ', ' . date('F Y'); ?></p>
+    </div>
 
-      //Date for the calendar events (dummy data)
-      var date = new Date();
-      var d = date.getDate(),
-      m = date.getMonth(),
-      y = date.getFullYear();
+    <div class="revenue-card">
+        <h1>₹ <?php echo number_format($totalRevenue,2); ?></h1>
+        <p>Total Revenue</p>
+    </div>
 
-      $('#calendar').fullCalendar({
-        header: {
-          left: '',
-          center: 'title'
-        },
-        buttonText: {
-          today: 'today',
-          month: 'month'          
-        }        
-      });
+</div>
 
+<?php if(isset($_SESSION['userId']) && $_SESSION['userId']==1) { ?>
 
-    });
+<div class="col-md-8">
+
+    <div class="custom-panel">
+
+        <h3>
+            <i class="fa-solid fa-chart-line"></i>
+            User Wise Orders
+        </h3>
+
+        <div class="table-responsive">
+
+            <table class="table table-hover">
+
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Total Sales</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                <?php while ($orderResult = $userwiseQuery->fetch_assoc()) { ?>
+
+                    <tr>
+                        <td>
+                            <strong><?php echo $orderResult['username']; ?></strong>
+                        </td>
+
+                        <td>
+                            <span class="badge-sales">
+                                ₹ <?php echo number_format($orderResult['totalorder'],2); ?>
+                            </span>
+                        </td>
+                    </tr>
+
+                <?php } ?>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<?php } ?>
+
+</div>
+
+</div>
+
+<script>
+$(function () {
+    $('#navDashboard').addClass('active');
+});
 </script>
 
 <?php require_once 'includes/footer.php'; ?>
