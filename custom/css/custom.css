@@ -1,3 +1,4 @@
+
 nav.navbar:hover {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -41,4 +42,69 @@ div.kv-avatar div.file-input div.file-preview {
 .vertical {
 	padding-top: 150px;
 	padding-bottom: 150px;
+}
+/* global mobile responsiveness */
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 991px) {
+  .vertical {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .navbar-brand {
+    font-size: 18px;
+  }
+
+  .panel,
+  .card {
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    font-size: 14px;
+  }
+
+  .container,
+  .container-fluid {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .table {
+    min-width: 640px;
+  }
+
+  .btn,
+  .form-control,
+  .input-group,
+  select,
+  textarea {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .modal-dialog {
+    width: auto;
+    margin: 10px;
+  }
+
+  div.cardHeader {
+    font-size: 28px;
+    padding: 8px;
+  }
 }
