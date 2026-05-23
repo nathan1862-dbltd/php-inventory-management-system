@@ -1,10 +1,10 @@
 <?php 	
 
 $localhost = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "store";
-$store_url = "http://localhost/php-inventory-management-system/";
+$username = "thebertg_admin";
+$password = "thebertg_admin";
+$dbname = "thebertg_pos";
+$store_url = "http://thebizportwebs.online/pos";
 // db connection
 $connect = new mysqli($localhost, $username, $password, $dbname);
 // check connection
