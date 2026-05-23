@@ -4,7 +4,7 @@ $localhost = "localhost";
 $username = "thebertg_admin";
 $password = "thebertg_admin";
 $dbname = "thebertg_pos";
-$store_url = "http://thebizportwebs.online/pos";
+$store_url = "http://analyze.thebizportwebs.online/";
 // db connection
 $connect = new mysqli($localhost, $username, $password, $dbname);
 // check connection
