@@ -1,0 +1,2 @@
+ALTER TABLE `product`
+ADD COLUMN IF NOT EXISTS `barcode` VARCHAR(255) NOT NULL AFTER `product_name`;
