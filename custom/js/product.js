@@ -42,6 +42,7 @@ $(document).ready(function() {
 			// form validation
 			var productImage = $("#productImage").val();
 			var productName = $("#productName").val();
+			var barcode = $("#barcode").val();
 			var quantity = $("#quantity").val();
 			var rate = $("#rate").val();
 			var brandName = $("#brandName").val();
@@ -66,6 +67,14 @@ $(document).ready(function() {
 				$("#productName").find('.text-danger').remove();
 				// success out for form 
 				$("#productName").closest('.form-group').addClass('has-success');	  	
+			}	// /else
+
+			if(barcode == "") {
+				$("#barcode").after('<p class="text-danger">Barcode field is required</p>');
+				$('#barcode').closest('.form-group').addClass('has-error');
+			}	else {
+				$("#barcode").find('.text-danger').remove();
+				$("#barcode").closest('.form-group').addClass('has-success');
 			}	// /else
 
 			if(quantity == "") {
@@ -118,7 +127,7 @@ $(document).ready(function() {
 				$("#productStatus").closest('.form-group').addClass('has-success');	  	
 			}	// /else
 
-			if(productImage && productName && quantity && rate && brandName && categoryName && productStatus) {
+			if(productImage && productName && barcode && quantity && rate && brandName && categoryName && productStatus) {
 				// submit loading button
 				$("#createProductBtn").button('loading');
 
@@ -233,6 +242,8 @@ function editProduct(productId = null) {
 				
 				// product name
 				$("#editProductName").val(response.product_name);
+				// barcode
+				$("#editBarcode").val(response.barcode);
 				// quantity
 				$("#editQuantity").val(response.quantity);
 				// rate
@@ -250,6 +261,7 @@ function editProduct(productId = null) {
 					// form validation
 					var productImage = $("#editProductImage").val();
 					var productName = $("#editProductName").val();
+					var barcode = $("#editBarcode").val();
 					var quantity = $("#editQuantity").val();
 					var rate = $("#editRate").val();
 					var brandName = $("#editBrandName").val();
@@ -265,6 +277,14 @@ function editProduct(productId = null) {
 						$("#editProductName").find('.text-danger').remove();
 						// success out for form 
 						$("#editProductName").closest('.form-group').addClass('has-success');	  	
+					}	// /else
+
+					if(barcode == "") {
+						$("#editBarcode").after('<p class="text-danger">Barcode field is required</p>');
+						$('#editBarcode').closest('.form-group').addClass('has-error');
+					}	else {
+						$("#editBarcode").find('.text-danger').remove();
+						$("#editBarcode").closest('.form-group').addClass('has-success');
 					}	// /else
 
 					if(quantity == "") {
@@ -317,7 +337,7 @@ function editProduct(productId = null) {
 						$("#editProductStatus").closest('.form-group').addClass('has-success');	  	
 					}	// /else					
 
-					if(productName && quantity && rate && brandName && categoryName && productStatus) {
+					if(productName && barcode && quantity && rate && brandName && categoryName && productStatus) {
 						// submit loading button
 						$("#editProductBtn").button('loading');
 
