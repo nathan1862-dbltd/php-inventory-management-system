@@ -80,6 +80,14 @@
 	        </div> <!-- /form-group-->	    
 
 	        <div class="form-group">
+	        	<label for="barcode" class="col-sm-3 control-label">Barcode: </label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+				      <input type="text" class="form-control" id="barcode" placeholder="Barcode" name="barcode" autocomplete="off">
+				    </div>
+	        </div> <!-- /form-group-->
+
+	        <div class="form-group">
 	        	<label for="quantity" class="col-sm-3 control-label">Quantity: </label>
 	        	<label class="col-sm-1 control-label">: </label>
 				    <div class="col-sm-8">
@@ -229,13 +237,21 @@
 
 				    	<div id="edit-product-messages"></div>
 
-				    	<div class="form-group">
-			        	<label for="editProductName" class="col-sm-3 control-label">Product Name: </label>
+				    <div class="form-group">
+				    	<label for="editProductName" class="col-sm-3 control-label">Product Name: </label>
 			        	<label class="col-sm-1 control-label">: </label>
 						    <div class="col-sm-8">
 						      <input type="text" class="form-control" id="editProductName" placeholder="Product Name" name="editProductName" autocomplete="off">
 						    </div>
-			        </div> <!-- /form-group-->	    
+				    </div> <!-- /form-group-->	
+
+				    <div class="form-group">
+				    	<label for="editBarcode" class="col-sm-3 control-label">Barcode: </label>
+				    	<label class="col-sm-1 control-label">: </label>
+					    <div class="col-sm-8">
+					      <input type="text" class="form-control" id="editBarcode" placeholder="Barcode" name="editBarcode" autocomplete="off">
+					    </div>
+				    </div> <!-- /form-group-->	
 
 			        <div class="form-group">
 			        	<label for="editQuantity" class="col-sm-3 control-label">Quantity: </label>
