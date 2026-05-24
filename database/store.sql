@@ -97,6 +97,7 @@ CREATE TABLE `order_item` (
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `product_name` varchar(255) NOT NULL,
+  `barcode` varchar(255) NOT NULL,
   `product_image` text NOT NULL,
   `brand_id` int(11) NOT NULL,
   `categories_id` int(11) NOT NULL,

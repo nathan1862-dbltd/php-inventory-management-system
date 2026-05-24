@@ -7,6 +7,7 @@ $valid['success'] = array('success' => false, 'messages' => array());
 if($_POST) {
 	$productId = $_POST['productId'];
 	$productName 		= $_POST['editProductName']; 
+	$barcode 			= $_POST['editBarcode'];
   $quantity 			= $_POST['editQuantity'];
   $rate 					= $_POST['editRate'];
   $brandName 			= $_POST['editBrandName'];
@@ -14,7 +15,7 @@ if($_POST) {
   $productStatus 	= $_POST['editProductStatus'];
 
 				
-	$sql = "UPDATE product SET product_name = '$productName', brand_id = '$brandName', categories_id = '$categoryName', quantity = '$quantity', rate = '$rate', active = '$productStatus', status = 1 WHERE product_id = $productId ";
+	$sql = "UPDATE product SET product_name = '$productName', barcode = '$barcode', brand_id = '$brandName', categories_id = '$categoryName', quantity = '$quantity', rate = '$rate', active = '$productStatus', status = 1 WHERE product_id = $productId ";
 
 	if($connect->query($sql) === TRUE) {
 		$valid['success'] = true;
