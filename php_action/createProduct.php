@@ -7,6 +7,7 @@ $valid['success'] = array('success' => false, 'messages' => array());
 if($_POST) {	
 
 	$productName 		= $_POST['productName'];
+	$barcode 			= $_POST['barcode'];
   // $productImage 	= $_POST['productImage'];
   $quantity 			= $_POST['quantity'];
   $rate 					= $_POST['rate'];
@@ -21,8 +22,8 @@ if($_POST) {
 		if(is_uploaded_file($_FILES['productImage']['tmp_name'])) {			
 			if(move_uploaded_file($_FILES['productImage']['tmp_name'], $url)) {
 				
-				$sql = "INSERT INTO product (product_name, product_image, brand_id, categories_id, quantity, rate, active, status) 
-				VALUES ('$productName', '$url', '$brandName', '$categoryName', '$quantity', '$rate', '$productStatus', 1)";
+				$sql = "INSERT INTO product (product_name, barcode, product_image, brand_id, categories_id, quantity, rate, active, status) 
+				VALUES ('$productName', '$barcode', '$url', '$brandName', '$categoryName', '$quantity', '$rate', '$productStatus', 1)";
 
 				if($connect->query($sql) === TRUE) {
 					$valid['success'] = true;
