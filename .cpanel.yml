@@ -1,10 +1,4 @@
-diff --git a/.cpanel.yml b/.cpanel.yml
-new file mode 100644
-index 0000000000000000000000000000000000000000..2180773de57e625c3fc88ae91f65215fae9395fa
---- /dev/null
-+++ b/.cpanel.yml
-@@ -0,0 +1,4 @@
-+deployment:
-+  tasks
-+    - export DEPLOYPATH=/home/thebertg/op.thebizportwebs.online/
-+    - /bin/cp -R * $DEPLOYPATH
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/thebertg/op.thebizportwebs.online/
+    - /bin/cp -R * "$DEPLOYPATH"
