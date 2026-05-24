@@ -5,6 +5,6 @@ index 0000000000000000000000000000000000000000..2180773de57e625c3fc88ae91f65215f
 +++ b/.cpanel.yml
 @@ -0,0 +1,4 @@
 +deployment:
-+  tasks:
-+    - export DEPLOYPATH=/home/thebertg/analyze.thebizportwebs.online/
++  tasks
++    - export DEPLOYPATH=/home/thebertg/op.thebizportwebs.online/
 +    - /bin/cp -R * $DEPLOYPATH
