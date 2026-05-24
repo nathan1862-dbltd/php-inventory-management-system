@@ -4,8 +4,8 @@ $localhost = "localhost";
 $username = "thebertg_admin";
 $password = "thebertg_admin";
 $dbname = "thebertg_pos";
-$store_url = "http://analyze.thebizportwebs.online/";
-// db connection
+$store_url = "http://op.thebizportwebs.online/";
+// db 
 $connect = new mysqli($localhost, $username, $password, $dbname);
 // check connection
 if($connect->connect_error) {
